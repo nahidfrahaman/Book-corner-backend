@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\projects\\Book-corner-backend\\logs\\winston\\success\\.7328cbc4447c7c1cb135737327bfb65467c811d4-audit.json",
+    "files": [
+        {
+            "date": 1689311121807,
+            "name": "C:\\projects\\Book-corner-backend\\logs\\winston\\success\\phu-2023-07-14-11-success.log",
+            "hash": "a8f4994a343d3565dd4f146d7579a045c4ef59600f31cb8d05578570cf3c9ee8"
+        }
+    ],
+    "hashType": "sha256"
+}

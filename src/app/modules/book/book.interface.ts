@@ -9,3 +9,11 @@ export type IBook = {
 }
 
 export type BookModel = Model<IBook>
+
+export type IBookFilters = {
+  searchTerm?: string
+  title?: string
+  author?: string
+  genre?: string
+  publicationDate?: Date
+}
