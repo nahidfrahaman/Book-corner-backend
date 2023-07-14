@@ -9,6 +9,21 @@
             "date": 1689311121807,
             "name": "C:\\projects\\Book-corner-backend\\logs\\winston\\success\\phu-2023-07-14-11-success.log",
             "hash": "a8f4994a343d3565dd4f146d7579a045c4ef59600f31cb8d05578570cf3c9ee8"
+        },
+        {
+            "date": 1689316051950,
+            "name": "C:\\projects\\Book-corner-backend\\logs\\winston\\success\\phu-2023-07-14-12-success.log",
+            "hash": "82cf2930694b78022650ff34fcb6f9f46f919f72afc91aae88fb00a1da92e3e9"
+        },
+        {
+            "date": 1689327919473,
+            "name": "C:\\projects\\Book-corner-backend\\logs\\winston\\success\\phu-2023-07-14-15-success.log",
+            "hash": "be088e2eb89fb1ed86dd49851c52194501bba1d9460502668b1391ed32967d32"
+        },
+        {
+            "date": 1689328830822,
+            "name": "C:\\projects\\Book-corner-backend\\logs\\winston\\success\\phu-2023-07-14-16-success.log",
+            "hash": "993d422cb8fcd7962beccca773ad0eab1b084fe654a69b40acfa3bc51708cf22"
         }
     ],
     "hashType": "sha256"

@@ -1,3 +1,5 @@
+import { StatusCodes } from 'http-status-codes'
+import ApiError from '../../../errors/ApiError'
 import { paginationHelper } from '../../../helper/paginationHelper'
 import { IPaginationOption } from '../../../interfaces/sharedInterface'
 import { BookSearchableFields } from './book.constant'
@@ -58,7 +60,24 @@ const getAllBook = async (
   }
 }
 
+const updateBook = async (id: string, updatedData: Partial<IBook>) => {
+  const results = await Book.findOneAndUpdate({ _id: id }, updatedData, {
+    new: true,
+  })
+  if (!results) {
+    throw new ApiError(StatusCodes.FORBIDDEN, 'updated failed')
+  }
+  return results
+}
+
+const deleteBook = async (id: string) => {
+  const results = await Book.findByIdAndDelete(id)
+  return results
+}
+
 export const BookService = {
   createBook,
   getAllBook,
+  updateBook,
+  deleteBook,
 }

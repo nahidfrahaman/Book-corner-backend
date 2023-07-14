@@ -26,3 +26,8 @@ export interface IGenericResponse<T> {
   data?: T
   message: string
 }
+
+export type ILoignUser = {
+  userName: string
+  password: string
+}
