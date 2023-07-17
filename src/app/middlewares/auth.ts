@@ -12,6 +12,7 @@ const auth =
     try {
       // access token
       const token = req.headers.authorization
+
       if (!token) {
         throw new ApiError(
           StatusCodes.UNAUTHORIZED,

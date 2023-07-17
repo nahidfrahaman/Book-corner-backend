@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { StatusCodes } from 'http-status-codes'
 
@@ -60,10 +61,8 @@ const refreshToken = async (token: string): Promise<IRfreshResponse> => {
   } catch (error) {
     throw new ApiError(StatusCodes.FORBIDDEN, ' invalid refresh token')
   }
-  console.log(verifyToken)
 
   const { UserName, email } = verifyToken as JwtPayload
-  console.log('refresh :', UserName, email)
 
   const isUserExist = await User.isUserExist(UserName)
   if (!isUserExist) {

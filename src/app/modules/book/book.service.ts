@@ -60,6 +60,40 @@ const getAllBook = async (
   }
 }
 
+const getAllofBook = async (filters: IBookFilters) => {
+  const { searchTerm, ...filtersData } = filters
+
+  type Condition = {
+    $or?: { [key: string]: { $regex: string; $options: string } }[]
+    $and?: { [key: string]: unknown }[]
+  }
+
+  const andCondition: Condition[] = []
+
+  if (searchTerm) {
+    andCondition.push({
+      $or: BookSearchableFields.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
+        },
+      })),
+    })
+  }
+
+  if (Object.keys(filtersData).length) {
+    andCondition.push({
+      $and: Object.entries(filtersData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    })
+  }
+  const whereCondition = andCondition.length > 0 ? { $and: andCondition } : {}
+
+  const results = await Book.find(whereCondition)
+  return results
+}
+
 const updateBook = async (id: string, updatedData: Partial<IBook>) => {
   const results = await Book.findOneAndUpdate({ _id: id }, updatedData, {
     new: true,
@@ -74,10 +108,16 @@ const deleteBook = async (id: string) => {
   const results = await Book.findByIdAndDelete(id)
   return results
 }
+const getSingleBook = async (id: string) => {
+  const results = await Book.findById(id)
+  return results
+}
 
 export const BookService = {
   createBook,
   getAllBook,
+  getAllofBook,
+  getSingleBook,
   updateBook,
   deleteBook,
 }

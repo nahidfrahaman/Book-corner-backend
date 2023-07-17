@@ -12,7 +12,6 @@ export type IUser = {
     middleName?: string
   }
   email: string
-  address: string
 }
 
 export type UserModel = {

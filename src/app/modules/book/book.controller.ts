@@ -10,7 +10,6 @@ import { BookService } from './book.service'
 
 const createBook = catchAsync(async (req: Request, res: Response) => {
   const createdBookData = req.body
-
   const results = await BookService.createBook(createdBookData)
 
   sendSuccessResponse<IBook>(res, {
@@ -32,7 +31,21 @@ const getAllBook = catchAsync(async (req: Request, res: Response) => {
   sendSuccessResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Cow data created Successfuly',
+    message: ' book  data retrive Successfuly',
+    data: results,
+  })
+})
+const getAllOfBooks = catchAsync(async (req: Request, res: Response) => {
+  const filtersData = pick(req.query, [
+    'searchTerm',
+    'genre',
+    'publicationDate',
+  ])
+  const results = await BookService.getAllofBook(filtersData)
+  sendSuccessResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'book data retrive Successfuly',
     data: results,
   })
 })
@@ -61,10 +74,24 @@ const deleteBook = catchAsync(async (req: Request, res: Response) => {
     data: results,
   })
 })
+const getSingleBook = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+
+  const results = await BookService.getSingleBook(id)
+
+  sendSuccessResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Book deleted Successfuly',
+    data: results,
+  })
+})
 
 export const BookController = {
   createBook,
   getAllBook,
+  getAllOfBooks,
+  getSingleBook,
   updateBook,
   deleteBook,
 }

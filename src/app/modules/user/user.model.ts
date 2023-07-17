@@ -39,10 +39,7 @@ const UserSchema = new Schema<IUser, UserModel>(
     email: {
       type: String,
       required: true,
-    },
-    address: {
-      type: String,
-      required: true,
+      unique: true,
     },
   },
   {
