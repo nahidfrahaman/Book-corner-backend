@@ -8,5 +8,5 @@ const express_1 = __importDefault(require("express"));
 const wishlist_controller_1 = require("./wishlist.controller");
 const router = express_1.default.Router();
 router.post('/add', wishlist_controller_1.WishListController.addBooKTWishList);
-router.get('/get', wishlist_controller_1.WishListController.getBooKsOWishList);
+router.get('/get/:id', wishlist_controller_1.WishListController.getBooKsOWishList);
 exports.WishListRoutes = router;

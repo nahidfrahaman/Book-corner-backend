@@ -11,11 +11,9 @@ const addBooKToWishList = async (payload: IWishList) => {
 
   return results
 }
-const getBooKsOfWishList = async (payload: Partial<IWishList>) => {
-  const { userEmail } = payload
-
+const getBooKsOfWishList = async (email: string) => {
   const results = await WishList.find({
-    userEmail: userEmail,
+    userEmail: email,
   })
   if (!results) {
     throw new ApiError(StatusCodes.BAD_REQUEST, 'user can not created')

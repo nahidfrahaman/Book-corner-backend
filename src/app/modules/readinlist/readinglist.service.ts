@@ -11,11 +11,9 @@ const addBooKToReadingList = async (payload: IReadingList) => {
 
   return results
 }
-const getBooKsOfReadingList = async (payload: Partial<IReadingList>) => {
-  const { userEmail } = payload
-
+const getBooKsOfReadingList = async (email: string) => {
   const results = await ReadingList.find({
-    userEmail: userEmail,
+    userEmail: email,
   })
   if (!results) {
     throw new ApiError(StatusCodes.BAD_REQUEST, 'user can not created')

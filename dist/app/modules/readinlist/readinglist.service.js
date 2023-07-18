@@ -23,10 +23,9 @@ const addBooKToReadingList = (payload) => __awaiter(void 0, void 0, void 0, func
     }
     return results;
 });
-const getBooKsOfReadingList = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const { userEmail } = payload;
+const getBooKsOfReadingList = (email) => __awaiter(void 0, void 0, void 0, function* () {
     const results = yield readinglist_model_1.ReadingList.find({
-        userEmail: userEmail,
+        userEmail: email,
     });
     if (!results) {
         throw new ApiError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'user can not created');

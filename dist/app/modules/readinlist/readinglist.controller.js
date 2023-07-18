@@ -28,9 +28,9 @@ const addBooKToReadingList = (0, catchAsync_1.default)((req, res) => __awaiter(v
     });
 }));
 const getBooKsOfReadingList = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const requestedData = req.body;
-    console.log(requestedData);
-    const results = yield readinglist_service_1.ReadingListService.getBooKsOfReadingList(requestedData);
+    const { id } = req.params;
+    const email = id;
+    const results = yield readinglist_service_1.ReadingListService.getBooKsOfReadingList(email);
     (0, customResponse_1.sendSuccessResponse)(res, {
         statusCode: http_status_1.default.OK,
         success: true,

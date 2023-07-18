@@ -23,10 +23,9 @@ const addBooKToWishList = (payload) => __awaiter(void 0, void 0, void 0, functio
     }
     return results;
 });
-const getBooKsOfWishList = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const { userEmail } = payload;
+const getBooKsOfWishList = (email) => __awaiter(void 0, void 0, void 0, function* () {
     const results = yield wishlist_model_1.WishList.find({
-        userEmail: userEmail,
+        userEmail: email,
     });
     if (!results) {
         throw new ApiError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'user can not created');

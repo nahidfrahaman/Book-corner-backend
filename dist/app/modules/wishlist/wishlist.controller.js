@@ -28,8 +28,9 @@ const addBooKTWishList = (0, catchAsync_1.default)((req, res) => __awaiter(void 
     });
 }));
 const getBooKsOWishList = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const requestedData = req.body;
-    const results = yield wishlist_service_1.WishListService.getBooKsOfWishList(requestedData);
+    const { id } = req.params;
+    const email = id;
+    const results = yield wishlist_service_1.WishListService.getBooKsOfWishList(email);
     (0, customResponse_1.sendSuccessResponse)(res, {
         statusCode: http_status_1.default.OK,
         success: true,

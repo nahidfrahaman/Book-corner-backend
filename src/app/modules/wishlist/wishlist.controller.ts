@@ -18,9 +18,10 @@ const addBooKTWishList = catchAsync(async (req: Request, res: Response) => {
 })
 
 const getBooKsOWishList = catchAsync(async (req: Request, res: Response) => {
-  const requestedData = req.body
+  const { id } = req.params
+  const email = id
 
-  const results = await WishListService.getBooKsOfWishList(requestedData)
+  const results = await WishListService.getBooKsOfWishList(email)
 
   sendSuccessResponse(res, {
     statusCode: httpStatus.OK,
