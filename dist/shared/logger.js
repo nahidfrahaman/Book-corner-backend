@@ -1,8 +1,8 @@
+"use strict";
 // import { createLogger, format, transports } from 'winston'
 // import DailyRotateFile from 'winston-daily-rotate-file'
 // const { combine, timestamp, label, printf } = format
 // import path from 'path'
-
 // // Custom Log format
 // const myFormat = printf(({ level, message, label, timestamp }) => {
 //   const date = new Date(timestamp).toDateString()
@@ -12,7 +12,6 @@
 //   const time = `${hour}:${minutes}:${seconds}`
 //   return `${date} | ${time} [${label}] ${level}: ${message}`
 // })
-
 // const successLogger = createLogger({
 //   level: 'info',
 //   format: combine(label({ label: 'Success Log' }), timestamp(), myFormat),
@@ -33,7 +32,6 @@
 //     }),
 //   ],
 // })
-
 // const errorLogger = createLogger({
 //   level: 'error',
 //   format: combine(label({ label: 'Error Log' }), timestamp(), myFormat),
@@ -54,5 +52,4 @@
 //     }),
 //   ],
 // })
-
 // export { successLogger, errorLogger }

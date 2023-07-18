@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { ErrorRequestHandler } from 'express'
 import { ZodError } from 'zod'
@@ -8,13 +9,12 @@ import handleMongoServerError from '../../errors/handleMongoServerError'
 import handleMongooseValidationError from '../../errors/handleMongooseValidationError'
 import handleZodValidationError from '../../errors/handleZodValidationError'
 import { IGenericErrorMessage } from '../../interfaces/errorInterface'
-import { errorLogger } from '../../shared/logger'
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   if (config.env === 'development') {
     console.log(error)
   } else {
-    errorLogger.error(error)
+    console.log(error)
   }
 
   const status = 'false'

@@ -6,6 +6,7 @@ export type IBook = {
   genre: string
   publicationDate: Date
   reviews: []
+  img: string
 }
 
 export type BookModel = Model<IBook>

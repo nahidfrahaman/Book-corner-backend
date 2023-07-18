@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-undef */
 import { StatusCodes } from 'http-status-codes'
+import mongoose from 'mongoose'
 import ApiError from '../../../errors/ApiError'
 import { paginationHelper } from '../../../helper/paginationHelper'
 import { IPaginationOption } from '../../../interfaces/sharedInterface'
@@ -112,6 +115,37 @@ const getSingleBook = async (id: string) => {
   const results = await Book.findById(id)
   return results
 }
+const postComments = async (id: string, comments: any) => {
+  const results = await Book.findOneAndUpdate(
+    { _id: id },
+    { $push: { reviews: comments.reviews } },
+  )
+  let updatedResults
+  if (results) {
+    updatedResults = await Book.findById(id)
+  }
+  return updatedResults
+}
+const getComments = async (id: string) => {
+  const ids = new mongoose.Types.ObjectId(id)
+  const agg = [
+    {
+      $match: {
+        _id: ids,
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        reviews: 1,
+      },
+    },
+  ]
+
+  const results = await Book.aggregate(agg)
+
+  return results[0]
+}
 
 export const BookService = {
   createBook,
@@ -120,4 +154,6 @@ export const BookService = {
   getSingleBook,
   updateBook,
   deleteBook,
+  postComments,
+  getComments,
 }

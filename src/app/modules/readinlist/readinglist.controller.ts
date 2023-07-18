@@ -20,6 +20,7 @@ const addBooKToReadingList = catchAsync(async (req: Request, res: Response) => {
 const getBooKsOfReadingList = catchAsync(
   async (req: Request, res: Response) => {
     const requestedData = req.body
+    console.log(requestedData)
 
     const results = await ReadingListService.getBooKsOfReadingList(
       requestedData,

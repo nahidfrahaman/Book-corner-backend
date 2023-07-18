@@ -23,6 +23,10 @@ export const BookSchema = new Schema<IBook, BookModel>(
       type: [],
       required: true,
     },
+    img: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

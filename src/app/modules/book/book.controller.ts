@@ -86,6 +86,31 @@ const getSingleBook = catchAsync(async (req: Request, res: Response) => {
     data: results,
   })
 })
+const postComments = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+  const comments = req.body
+
+  const results = await BookService.postComments(id, comments)
+
+  sendSuccessResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'comment posted Successfuly',
+    data: results,
+  })
+})
+const getComments = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+
+  const results = await BookService.getComments(id)
+
+  sendSuccessResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'comment posted Successfuly',
+    data: results,
+  })
+})
 
 export const BookController = {
   createBook,
@@ -94,4 +119,6 @@ export const BookController = {
   getSingleBook,
   updateBook,
   deleteBook,
+  postComments,
+  getComments,
 }
